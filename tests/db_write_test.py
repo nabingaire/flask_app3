@@ -1,13 +1,26 @@
 import unittest
 from pymongo import MongoClient
-import os
-from dotenv import load_dotenv
 
+'''
+DBWriteTest is a unit test to verify that the app can successfully connect to MongoDb and do a write operation.
+There are 2 main functions inside the test class:-
+    1) setUp - This function sets the mongodb url, client, db object and collection object.
+    2) testInsertDocument - This function tests the insertion of new document. First a test document is created.
+        Before inserting total dccuments are counted. After inserting total document is counted.
+        It is then asserted that before count +1 equals after count.
+        Likewise, the databse is again queried to find the newly inserted document and asserted if the result is None.
+        After assertions , the newly inserted document is deleted since it is for testing purpose onyl.
+
+This test runs when following command is run during the github action.
+
+- name: run tests
+  run: |
+    python -m unittest discover -s tests -p "*.py"
+'''
 
 class DBWriteTest(unittest.TestCase):
     
     def setUp(self):
-        load_dotenv()
         self.mongo_url = "mongodb+srv://nabin:nabin@shop.sccvu.mongodb.net/?retryWrites=true&w=majority&appName=shop"
         self.client = MongoClient(self.mongo_url)
         self.db = self.client.get_database('shop_db')

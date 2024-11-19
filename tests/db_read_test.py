@@ -1,13 +1,24 @@
 import unittest
-import os
 from pymongo import MongoClient
 from pymongo.errors import OperationFailure, ConnectionFailure
-from dotenv import load_dotenv
+
+'''
+DBReadTest is a unit test to verify that the app can successfully connect to MongoDb and do a read operation.
+There are 3 main functions inside the test class:-
+    1) setUp - This function sets the mongodb url and client as None.
+    2) testDBReadOk - This function tests when correct MongoDB url is provided. After successfull connection, it pings the database server.
+    3) testDBReadFailure - This fucntion tests when incorrect MongoDb url is provided. When incorrect url is provided, it throws OperationFailure error.
+
+This test runs when following command is run during the github action.
+
+- name: run tests
+  run: |
+    python -m unittest discover -s tests -p "*.py"
+'''
 
 class DBReadTest(unittest.TestCase):
     
     def setUp(self):
-        load_dotenv()
         self.mongo_url = "mongodb+srv://nabin:nabin@shop.sccvu.mongodb.net/?retryWrites=true&w=majority&appName=shop"
         self.client = None
         

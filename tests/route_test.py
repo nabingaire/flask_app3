@@ -9,6 +9,19 @@ sys.path.append(parent)
 import app
 from app import app  
 
+'''
+RouteTest is a unit test to verify that Flask app respond correctly to HTTP requests.
+Here in this test the route '/products' is being tested.
+The route '/products' only accepts GET method. This is tested in method test_valid_method().
+The route '/products' does not accept POST method. This is tested in method test_invalid_method().
+
+This test runs when following command is run during the github action.
+
+- name: run tests
+  run: |
+    python -m unittest discover -s tests -p "*.py"
+'''
+
 class RouteTest(unittest.TestCase):
 
     def setUp(self):
