@@ -8,12 +8,12 @@ app = Flask(__name__)
 
 load_dotenv()
 
-MONGODB_URL = os.getenv('MONGODB_URL2')
+MONGODB_URL = "mongodb+srv://nabin:nabin@shop.sccvu.mongodb.net/?retryWrites=true&w=majority&appName=shop"
 
 client = MongoClient(MONGODB_URL,server_api=ServerApi('1'))
 
-MONGODB_DBNAME = os.getenv('MONGODB_DBNAME')
-MONGODB_COLLECTION = os.getenv('MONGODB_COLLECTIONNAME')
+MONGODB_DBNAME = "shop_db"
+MONGODB_COLLECTION = "products"
 db = client.get_database(MONGODB_DBNAME)
 products_all = db.get_collection(MONGODB_COLLECTION)
 
