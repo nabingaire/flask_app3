@@ -30,6 +30,11 @@ class DBWriteTest(unittest.TestCase):
             
             self.assertIsNotNone(insertResult, "Document insert failed!")
             self.assertEqual(finalCount, count+1, "Document insert failed!")
+            
+            insertedData = self.products_all.find_one(testProduct)
+            self.assertIsNotNone(insertedData,"Inserted document not found")
+            self.assertEqual(insertedData["name"],testProduct["name"],"Inserted document name doesnot match")
+            
             self.products_all.delete_one({"_id":insertResult.inserted_id})
             
         finally:
