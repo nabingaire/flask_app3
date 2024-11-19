@@ -8,7 +8,7 @@ class DBReadTest(unittest.TestCase):
     
     def setUp(self):
         load_dotenv()
-        self.mongo_url = os.getenv('MONGODB_URL')
+        self.mongo_url = "mongodb+srv://nabin:nabin@shop.sccvu.mongodb.net/?retryWrites=true&w=majority&appName=shop"
         self.client = None
         
     def testDBReadOk(self):
@@ -30,7 +30,7 @@ class DBReadTest(unittest.TestCase):
         
         with self.assertRaises(OperationFailure):
             try:
-                self.mongo_url = os.getenv('MONGODB_URL2')
+                self.mongo_url = "mongodb+srv://nabin:nabingaire@shop.sccvu.mongodb.net/?retryWrites=true&w=majority&appName=shop"
                 self.client = MongoClient(self.mongo_url)
                 self.client.admin.command('ping')
             

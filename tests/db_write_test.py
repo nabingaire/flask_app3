@@ -8,10 +8,10 @@ class DBWriteTest(unittest.TestCase):
     
     def setUp(self):
         load_dotenv()
-        self.mongo_url = os.getenv('MONGODB_URL')
+        self.mongo_url = "mongodb+srv://nabin:nabin@shop.sccvu.mongodb.net/?retryWrites=true&w=majority&appName=shop"
         self.client = MongoClient(self.mongo_url)
-        self.db = self.client.get_database(os.getenv('MONGODB_DBNAME'))
-        self.products_all = self.db.get_collection(os.getenv('MONGODB_COLLECTIONNAME'))
+        self.db = self.client.get_database('shop_db')
+        self.products_all = self.db.get_collection('products')
         
         
     def testInsertDocument(self):
