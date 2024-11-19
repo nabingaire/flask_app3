@@ -9,7 +9,7 @@ There are 2 main functions inside the test class:-
         Before inserting total dccuments are counted. After inserting total document is counted.
         It is then asserted that before count +1 equals after count.
         Likewise, the databse is again queried to find the newly inserted document and asserted if the result is None.
-        After assertions , the newly inserted document is deleted since it is for testing purpose onyl.
+        After assertions , the newly inserted document is deleted since it is for testing purpose only.
 
 This test runs when following command is run during the github action.
 
